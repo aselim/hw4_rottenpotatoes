@@ -1,5 +1,11 @@
 Rottenpotatoes::Application.routes.draw do
-  # The priority is based upon order of creation:
+  match 'movies/:id/find' => 'movies#find', :as => :find_movie
+  resources :movies
+#  get 'movies/find'
+# map '/' to be a redirect to '/movies'
+  root :to => redirect('/movies')
+end
+# The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
@@ -12,8 +18,12 @@ Rottenpotatoes::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :movies
-
+#   match ':controller/:id/:action'
+#   resources :movies
+#   get '/movies/:id/find'
+#   match 'movies/:id/find' => 'movies#find'
+#  resources :movies, path: "/movies/:id"
+#  match ':movies/:find'
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -56,4 +66,4 @@ Rottenpotatoes::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
-end
+# end
